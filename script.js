@@ -13,10 +13,10 @@ let star;
 function onReady() {
   // Make sure you check the index.html file!
   // There are lots of buttons and things ready for you to hook into here!
-  scepter = $(".arcane-scepter").on("click", attackEnemy);
-  entangle = $(".entangle").on("click", attackEnemy);
-  dragon =$(".dragon-blade").on("click", attackEnemy);
-  star = $(".star-fire").on("click", attackEnemy);
+  scepter = $(".attack-btn.arcane-scepter").on("click", attackScepter);
+  entangle = $(".attack-btn.entangle").on("click", attackEntangle);
+  dragon = $(".attack-btn.dragon-blade").on("click", attackDragon);
+  star = $(".attack-btn.star-fire").on("click", attackStar);
 
   // 🧠 Remember
   // - Handle events that ->
@@ -25,42 +25,44 @@ function onReady() {
   render();
 }
 
-function attackEnemy() {
-  if(scepter) {
-    // Health points
-    fungusHP -= 14;
-    // Attack points
-    attackPoints -= 12;
-    console.log("HP in scepter", fungusHP);
-    console.log("AP in scepter", attackPoints);
-    render();
-  }  else if(entangle) {
-    // Health points
-    fungusHP -= 9;
-    // Attack points
-    attackPoints -= 23;
-    console.log("HP in entangle", fungusHP);
-    console.log("AP in entangle", attackPoints);
-    render();
-  }  else if(dragon) {
-    // Health points
-    fungusHP -= 47;
-    // Attack points
-    attackPoints -= 38;
-    console.log("HP in dragon", fungusHP);
-    console.log("AP in dragon", attackPoints);
-    render();
-  }  else if(star) {
-    // Health points
-    fungusHP -= 33;
-    // Attack points
-    attackPoints -= 100;
-    console.log("HP in star", fungusHP);
-    console.log("AP in star", attackPoints);
-    render();
-  }
-  
+function attackScepter() {
+  // Health points
+  fungusHP -= 14;
+  // Attack points
+  attackPoints -= 12;
+  console.log("HP in scepter", fungusHP);
+  console.log("AP in scepter", attackPoints);
+  render();
 }
+
+function attackEntangle() {
+  // Health points
+  fungusHP -= 9;
+  // Attack points
+  attackPoints -= 23;
+  console.log("HP in entangle", fungusHP);
+  console.log("AP in entangle", attackPoints);
+  render();
+}
+function attackDragon() {
+  // Health points
+  fungusHP -= 38;
+  // Attack points
+  attackPoints -= 47;
+  console.log("HP in dragon", fungusHP);
+  console.log("AP in dragon", attackPoints);
+  render();
+}
+function attackStar() {
+  // Health points
+  fungusHP -= 25;
+  // Attack points
+  attackPoints -= 33;
+  console.log("HP in star", fungusHP);
+  console.log("AP in star", attackPoints);
+  render();
+}
+
 function render() {
   // Update the texts
   $(".hp-text").text(`${fungusHP} HP`);
