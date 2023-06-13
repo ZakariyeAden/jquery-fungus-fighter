@@ -7,25 +7,6 @@ $(document).ready(onReady);
 let fungusHP = 100;
 let attackPoints = 100;
 
-// ### ![arcane scepter](./images/arcane-scepter.png) Arcane Scepter
-
-// - **AP Cost:** 12
-// - **HP Damage:** 14
-
-// ### ![entangle](./images/entangle-3.png) Entangle
-
-// - **AP Cost:** 23
-// - **HP Damage:** 9
-
-// ### ![dragon blade](./images/dragon-blade-3.png) Dragon Blade
-
-// - **AP Cost:** 38
-// - **HP Damage:** 47
-
-// ### ![star fire](./images/star-fire.png) Star Fire
-
-// - **AP Cost:** 33
-// - **HP Damage:** 25
 function onReady() {
   // Make sure you check the index.html file!
   // There are lots of buttons and things ready for you to hook into here!
@@ -43,30 +24,30 @@ function onReady() {
 
 function attackEnemy() {
   if ($(".arcane-scepter")) {
-    // Health
+    // Health points
     fungusHP -= 14;
-    // Attack
+    // Attack points
     attackPoints -= 12;
     console.log("attack", fungusHP);
     render();
   } else if ($(".entangle")) {
-    // Health
+    // Health points
     fungusHP -= 9;
-    // Attack
+    // Attack points
     attackPoints -= 23;
     console.log("attack", fungusHP);
     render();
   } else if ($(".dragon-blade")) {
-    // Health
+    // Health points
     fungusHP -= 47;
-    // Attack
+    // Attack points
     attackPoints -= 38;
     console.log("attack", fungusHP);
     render();
   } else if ($(".star-fire")) {
-    // Health
+    // Health points
     fungusHP -= 33;
-    // Attack
+    // Attack points
     attackPoints -= 38;
     console.log("attack", fungusHP);
     render();
@@ -76,4 +57,10 @@ function render() {
   // Update the texts
   $(".hp-text").text(`${fungusHP} HP`);
   $(".ap-text").text(`${attackPoints} AP`);
+  // Animation to change the classes for whoever wins!
+  if (fungusHP < 0) {
+    $(".walk").addClass("dead");
+  } else if (attackPoints < 0) {
+    $(".walk").addClass("jump");
+  }
 }
