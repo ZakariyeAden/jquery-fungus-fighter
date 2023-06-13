@@ -72,6 +72,7 @@ function render() {
     $(".walk").addClass("dead");
   } else if (attackPoints < 0) {
     $(".walk").addClass("jump");
-    $(".attack-btn").addClass("disabled");
+    // Disable the buttons
+    $(".attack-btn").prop("disabled", true);
   }
 }
